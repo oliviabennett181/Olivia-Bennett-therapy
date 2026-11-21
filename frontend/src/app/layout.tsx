@@ -1,11 +1,60 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-export const metadata = {
-  title: "Therapy by Olivia-Bennett",
-  description:
-    "Expert therapeutic massage to restore your mind, body, and wellness.",
+const siteTitle = "Massage Therapy by Olivia-Bennett";
+const siteDescription =
+  "Professional therapeutic massage services and appointment bookings.";
+
+// Vercel provides VERCEL_URL at build time; set NEXT_PUBLIC_SITE_URL for a custom domain.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/brooke-about.jpg", type: "image/jpeg", sizes: "any" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    siteName: siteTitle,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/brooke-about-og.jpg",
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: siteTitle,
+      },
+      {
+        url: "/brooke-about.jpg",
+        width: 1080,
+        height: 910,
+        type: "image/jpeg",
+        alt: siteTitle,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/brooke-about-og.jpg", "/brooke-about.jpg"],
+  },
 };
 
 export default function RootLayout({

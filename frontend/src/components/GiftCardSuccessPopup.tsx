@@ -73,8 +73,6 @@ export default function GiftCardSuccessPopup({
           Your gift card inquiry has been successfully submitted.
         </p>
 
-       
-
         <button
           type="button"
           onClick={onClose}
