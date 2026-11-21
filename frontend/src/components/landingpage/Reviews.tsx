@@ -30,7 +30,7 @@ const INITIAL_REVIEWS: Review[] = [
     name: "Emily H",
     avatar: "/customer-name2.jpg",
     avatarBg: "bg-teal-700",
-    date: "Apr 9, 2025",
+    date: "Nov 20, 2026",
     rating: 5,
     text: "A very calming experience from beginning to end. Olivia-Bennett listened to the areas where I had tension and adjusted the session perfectly. I felt so much better afterward and will definitely return.",
   },
@@ -39,7 +39,7 @@ const INITIAL_REVIEWS: Review[] = [
     name: "Michael R",
     avatar: "/customer-name3.jpg",
     avatarBg: "bg-teal-700",
-    date: "Mar 7, 2026",
+    date: "Nov 19, 2026",
     verified: true,
     rating: 4,
     text: "Very good at what she does, but not always available.",
@@ -48,7 +48,7 @@ const INITIAL_REVIEWS: Review[] = [
     id: 3,
     name: "Mark & Jennifer S",
     avatar: "",
-    date: "May 8, 2026",
+    date: "Nov 18, 2026",
     verified: true,
     rating: 5,
     text: "We had a wonderful couples massage experience. Olivia-Bennett was warm, professional, and made us both feel comfortable from the moment we arrived.",
@@ -60,7 +60,7 @@ const MORE_REVIEWS: Review[] = [
     id: 4,
     name: "Bryan S",
     avatar: "/customer-name1.jpg",
-    date: "June 28, 2026",
+    date: "Nov 16, 2026",
     verified: true,
     rating: 5,
     text: "Professional, caring and highly recommended.",
@@ -70,7 +70,7 @@ const MORE_REVIEWS: Review[] = [
     name: "Chris M",
     avatar: "/customer-name4.jpg",
     avatarBg: "bg-teal-700",
-    date: "July 10, 2026",
+    date: "Nov 5, 2026",
     verified: true,
     rating: 5,
     text: "Very pleasant experience. Olivia-Bennett has a calming personality and great technique. Left feeling refreshed and much less stressed.",
@@ -80,7 +80,7 @@ const MORE_REVIEWS: Review[] = [
     name: "David K",
     avatar: "/customer-name5.jpg",
     avatarBg: "bg-teal-700",
-    date: "Aug 17, 2026",
+    date: "Oct 30, 2026",
     verified: true,
     rating: 5,
     text: "Friendly and outstanding service. Will definitely return.",
@@ -140,6 +140,10 @@ export default function Reviews({ onBookNow }: ReviewsProps) {
     setHasLoadedMore(true);
   };
 
+  const sortedReviews = [...reviews].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   return (
     <section id="reviews" className="py-24 px-6 bg-[#faf9f6]">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -172,7 +176,7 @@ export default function Reviews({ onBookNow }: ReviewsProps) {
 
         {/* REVIEWS GRID */}
         <div className="grid md:grid-cols-3 gap-6 pt-4">
-          {reviews.map((rev) => (
+          {sortedReviews.map((rev) => (
             <div
               key={rev.id}
               className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between"

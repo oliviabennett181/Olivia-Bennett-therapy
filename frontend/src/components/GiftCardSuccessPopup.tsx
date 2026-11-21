@@ -29,7 +29,7 @@ export default function GiftCardSuccessPopup({
     };
   }, [onClose]);
 
-  const formattedAmount = amount ? `$${Number(amount).toFixed(2)}` : "";
+  const formattedAmount = `$${Number(amount || 0).toFixed(2)}`;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
@@ -60,17 +60,15 @@ export default function GiftCardSuccessPopup({
           id="gift-card-success-title"
           className="font-serif text-2xl md:text-3xl text-stone-900 mb-4"
         >
-          Gift Card Inquiry Received!
+         Your Gift Card Balance!
         </h2>
 
-        {formattedAmount && (
-          <p className="text-4xl font-bold text-[#ea7a24] mb-4">
-            {formattedAmount}
-          </p>
-        )}
+         <p className="text-stone-600 text-sm md:text-base leading-relaxed mb-3">
+          Available Balance
+        </p>
 
-        <p className="text-stone-600 text-sm md:text-base leading-relaxed mb-3">
-          Your gift card inquiry has been successfully submitted.
+        <p className="text-4xl font-bold text-[#ea7a24] mb-4">
+          {formattedAmount}
         </p>
 
         <button

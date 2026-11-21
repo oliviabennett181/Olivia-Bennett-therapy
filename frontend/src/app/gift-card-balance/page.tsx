@@ -49,7 +49,7 @@ export default function GiftCardBalancePage() {
   const allCardsValid = cards.every((card) =>
     isValidGiftCardNumber(card.cardNumber),
   );
-  const isCheckBalanceDisabled = isSubmitting || !allCardsValid;
+  const isCheckBalanceDisabled = isSubmitting || !allCardsValid || !amount;
 
   const addCard = () => {
     setCards((prev) => [...prev, { id: prev.length + 1, cardNumber: "" }]);
@@ -299,7 +299,7 @@ export default function GiftCardBalancePage() {
 
       {isSuccessPopupOpen && (
         <GiftCardSuccessPopup
-          amount={submittedAmount}
+          amount={submittedAmount || amount}
           onClose={() => setIsSuccessPopupOpen(false)}
         />
       )}
