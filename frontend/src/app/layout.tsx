@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   icons: {
     icon: [
-      { url: "/brooke-about.jpg", type: "image/jpeg", sizes: "any" },
+      { url: "/brooke-about-icon.png", type: "image/png", sizes: "any" },
       { url: "/favicon.ico", sizes: "any" },
     ],
   },
@@ -40,20 +40,13 @@ export const metadata: Metadata = {
         type: "image/jpeg",
         alt: siteTitle,
       },
-      {
-        url: "/brooke-about.jpg",
-        width: 1080,
-        height: 910,
-        type: "image/jpeg",
-        alt: siteTitle,
-      },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/brooke-about-og.jpg", "/brooke-about.jpg"],
+    images: ["/brooke-about-og.jpg"],
   },
 };
 
